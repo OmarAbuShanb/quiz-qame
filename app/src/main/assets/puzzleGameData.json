@@ -1,0 +1,679 @@
+[
+  {
+    "level_no": 1,
+    "unlock_points": 0,
+    "questions": [
+      {
+        "id": 1,
+        "title": "عدد أحرف اللغة الانجليزية 28 حرف",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "false",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {
+          "pattern_id": 1,
+          "pattern_name": "True of False"
+        },
+        "hint": "عدد أحرف اللغة الانجليزية 26 حرف فقط"
+      },
+      {
+        "id": 2,
+        "title": "عاصمة أثيوبيا هي",
+        "answer_1": "أديس أبابا",
+        "answer_2": "جامايكا",
+        "answer_3": "كوالالمبور",
+        "answer_4": "دبلن",
+        "true_answer": "أديس أبابا",
+        "points": 3,
+        "duration": 30000,
+        "pattern": {
+          "pattern_id": 2,
+          "pattern_name": "Choose the correct answer"
+        },
+        "hint": "عاصمة أثيوبيا هي أديس أبابا"
+      },
+      {
+        "id": 3,
+        "title": "الكوكب الأحمر هو كوكب",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "المريخ",
+        "points": 1,
+        "duration": 40000,
+        "pattern": {
+          "pattern_id": 4,
+          "pattern_name": "Fill the answer"
+        },
+        "hint": "الكوكب الأحمر هو كوكب المريخ"
+      },
+      {
+        "id": 4,
+        "title": "عدد كواكب المجموعة الشمسية",
+        "answer_1": "10 كواكب",
+        "answer_2": "3 كواكب",
+        "answer_3": "8 كواكب",
+        "answer_4": "12 كوكب",
+        "true_answer": "8 كواكب",
+        "points": 3,
+        "duration": 30000,
+        "pattern": {
+          "pattern_id": 2,
+          "pattern_name": "Choose the correct answer"
+        },
+        "hint": "عدد كواكب المجموعة الشمسية هو 8 كواكب فقط"
+      }
+    ]
+  },
+  {
+    "level_no": 2,
+    "unlock_points": 9,
+    "questions": [
+      {
+        "id": 5,
+        "title": "شكل مجرة درب التبانة هو حلزوني",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {
+          "pattern_id": 1,
+          "pattern_name": "True of False"
+        },
+        "hint": "شكل مجرة درب التبانة هو حلزوني"
+      },
+      {
+        "id": 6,
+        "title": "يسمى صغير الضفدع",
+        "answer_1": "دنغل",
+        "answer_2": "شرغوف",
+        "answer_3": "يرقة",
+        "answer_4": "كوالا",
+        "true_answer": "شرغوف",
+        "points": 3,
+        "duration": 30000,
+        "pattern": {
+          "pattern_id": 2,
+          "pattern_name": "Choose the correct answer"
+        },
+        "hint": "صغير الضفدع هو الشرغوف"
+      },
+      {
+        "id": 7,
+        "title": "تعتبر ال....... هي أسرع المخلوقات البحرية",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "التونة",
+        "points": 4,
+        "duration": 40000,
+        "pattern": {
+          "pattern_id": 3,
+          "pattern_name": "Fill the answer"
+        },
+        "hint": "التونة تعتبر اسرع المخلوقات البحرية، حيث يعتبر الحوت أكبرها"
+      }
+    ]
+  },
+  {
+    "level_no": 3,
+    "unlock_points": 16,
+    "questions": [
+      {
+        "id": 8,
+        "title": "من هو الصحابي الملقب بـ أسد الله الغالب؟",
+        "answer_1": "علي بن ابي طالب",
+        "answer_2": "عمر بن الخطاب",
+        "answer_3": "ابو بكر الصديق",
+        "answer_4": "الزبير بن العوام",
+        "true_answer": "علي بن ابي طالب",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {
+          "pattern_id": 2,
+          "pattern_name": "Choose the correct answer"
+        },
+        "hint": "شكل مجرة درب التبانة هو حلزوني"
+      },
+      {
+        "id": 9,
+        "title": "من هو النبي الذي لُقب بـ أبي الأنبياء؟",
+        "answer_1": "نبي الله إبراهيم",
+        "answer_2": "نبي الله موسى",
+        "answer_3": "نبي الله محمد",
+        "answer_4": "نبي الله يوسف",
+        "true_answer": "نبي الله إبراهيم",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {
+          "pattern_id": 2,
+          "pattern_name": "Choose the correct answer"
+        },
+        "hint": "صغير الضفدع هو الشرغوف"
+      },
+      {
+        "id": 10,
+        "title": "من هو النبي الذي اختصه الله عز وجل بقتل المسيح الدجال في آخر الزمان بعد فتنة البشر به؟",
+        "answer_1": "سيدنا إبراهيم عليه السلام",
+        "answer_2": "سيدنا محمد صلي الله علية وسلم",
+        "answer_3": "سيدنا عيسى عليه السلام",
+        "answer_4": "سيدنا الخضر عليه السلام",
+        "true_answer": "سيدنا عيسى عليه السلام",
+        "points": 1,
+        "duration": 20000,
+        "pattern": {
+          "pattern_id": 3,
+          "pattern_name": "Choose the correct answer"
+        },
+        "hint": "التونة تعتبر اسرع المخلوقات البحرية، حيث يعتبر الحوت أكبرها"
+      }
+    ]
+  },
+  {
+    "level_no": 4,
+    "unlock_points": 25,
+    "questions": [
+      {
+        "id": 11,
+        "title": "ما هو أطول نهر في العالم؟",
+        "answer_1": "نهر الأمازون",
+        "answer_2": "نهر النيل",
+        "answer_3": "نهر اليانغتسي",
+        "answer_4": "نهر المسيسيبي",
+        "true_answer": "نهر النيل",
+        "points": 2,
+        "duration": 20000,
+        "pattern": {
+          "pattern_id": 2,
+          "pattern_name": "Choose the correct answer"
+        },
+        "hint": "يعتبر نهر النيل أطول نهر في العالم."
+      },
+      {
+        "id": 12,
+        "title": "كم عدد القارات في العالم؟",
+        "answer_1": "5",
+        "answer_2": "6",
+        "answer_3": "7",
+        "answer_4": "8",
+        "true_answer": "7",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {
+          "pattern_id": 2,
+          "pattern_name": "Choose the correct answer"
+        },
+        "hint": "يوجد سبع قارات في العالم."
+      },
+      {
+        "id": 13,
+        "title": "ما هي أكبر دولة في العالم من حيث المساحة؟",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "روسيا",
+        "points": 3,
+        "duration": 25000,
+        "pattern": {
+          "pattern_id": 4,
+          "pattern_name": "Fill the answer"
+        },
+        "hint": "روسيا هي أكبر دولة في العالم من حيث المساحة."
+      },
+      {
+        "id": 14,
+        "title": "أول دولة عربية تصل إلى كأس العالم لكرة القدم هي مصر.",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {
+          "pattern_id": 1,
+          "pattern_name": "True of False"
+        },
+        "hint": "مصر كانت أول دولة عربية تشارك في كأس العالم."
+      },
+      {
+        "id": 15,
+        "title": "ما هو الحيوان الذي يُعرف بـ \"سفينة الصحراء\"؟",
+        "answer_1": "الحصان",
+        "answer_2": "الجمل",
+        "answer_3": "الغزال",
+        "answer_4": "الفيل",
+        "true_answer": "الجمل",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {
+          "pattern_id": 2,
+          "pattern_name": "Choose the correct answer"
+        },
+        "hint": "الجمل هو الحيوان الذي يشتهر بقدرته على تحمل ظروف الصحراء القاسية."
+      }
+    ]
+  },
+  {
+    "level_no": 5,
+    "unlock_points": 36,
+    "questions": [
+      {
+        "id": 16,
+        "title": "أكبر محيط في العالم هو المحيط الأطلسي",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "false",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "أكبر محيط في العالم هو المحيط الهادئ"
+      },
+      {
+        "id": 17,
+        "title": "عاصمة اليابان هي طوكيو",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "عاصمة اليابان هي طوكيو"
+      },
+      {
+        "id": 18,
+        "title": "أصغر قارة في العالم هي",
+        "answer_1": "أوروبا",
+        "answer_2": "أستراليا",
+        "answer_3": "آسيا",
+        "answer_4": "أفريقيا",
+        "true_answer": "أستراليا",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {"pattern_id": 2, "pattern_name": "Choose the correct answer"},
+        "hint": "أستراليا هي أصغر قارات العالم من حيث المساحة"
+      },
+      {
+        "id": 19,
+        "title": "يسمى صوت الأسد",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "زئير",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 4, "pattern_name": "Fill the answer"},
+        "hint": "صوت الأسد يسمى الزئير"
+      },
+      {
+        "id": 20,
+        "title": "القطط تنام حوالي 16 ساعة يومياً",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "القطط من أكثر الحيوانات نومًا"
+      }
+    ]
+  },
+  {
+    "level_no": 6,
+    "unlock_points": 45,
+    "questions": [
+      {
+        "id": 21,
+        "title": "أكبر كوكب في المجموعة الشمسية هو المشتري",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "المشتري هو أكبر كواكب المجموعة الشمسية"
+      },
+      {
+        "id": 22,
+        "title": "صغير الأسد يسمى",
+        "answer_1": "شبل",
+        "answer_2": "جرو",
+        "answer_3": "عجل",
+        "answer_4": "فرخ",
+        "true_answer": "شبل",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {"pattern_id": 2, "pattern_name": "Choose the correct answer"},
+        "hint": "صغير الأسد يسمى شبل"
+      },
+      {
+        "id": 23,
+        "title": "العملة الرسمية في مصر هي الدولار",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "false",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "العملة الرسمية في مصر هي الجنيه المصري"
+      },
+      {
+        "id": 24,
+        "title": "النحل يصنع العسل",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "النحل يصنع العسل من رحيق الأزهار"
+      },
+      {
+        "id": 25,
+        "title": "ما هو أسرع حيوان بري؟",
+        "answer_1": "الفهد",
+        "answer_2": "الحصان",
+        "answer_3": "الغزال",
+        "answer_4": "الأرنب",
+        "true_answer": "الفهد",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {"pattern_id": 2, "pattern_name": "Choose the correct answer"},
+        "hint": "الفهد هو أسرع الحيوانات البرية"
+      },
+      {
+        "id": 26,
+        "title": "يعد البحر الأحمر من البحار الداخلية",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "البحر الأحمر بحر داخلي يصل بين المحيط الهندي والبحر المتوسط عبر قناة السويس"
+      }
+    ]
+  },
+  {
+    "level_no": 7,
+    "unlock_points": 55,
+    "questions": [
+      {
+        "id": 27,
+        "title": "أطول نهر في العالم هو نهر الأمازون",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "false",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "نهر النيل هو أطول نهر في العالم"
+      },
+      {
+        "id": 28,
+        "title": "أصغر دولة في العالم هي",
+        "answer_1": "الفاتيكان",
+        "answer_2": "موناكو",
+        "answer_3": "سان مارينو",
+        "answer_4": "ليختنشتاين",
+        "true_answer": "الفاتيكان",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {"pattern_id": 2, "pattern_name": "Choose the correct answer"},
+        "hint": "الفاتيكان هي أصغر دولة في العالم"
+      },
+      {
+        "id": 29,
+        "title": "صغير البقرة يسمى",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "عجل",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 4, "pattern_name": "Fill the answer"},
+        "hint": "صغير البقرة يسمى عجل"
+      }
+    ]
+  },
+  {
+    "level_no": 8,
+    "unlock_points": 65,
+    "questions": [
+      {
+        "id": 30,
+        "title": "أول قمر اصطناعي أُطلق إلى الفضاء هو سبوتنيك",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "سبوتنيك 1 أول قمر اصطناعي في عام 1957"
+      },
+      {
+        "id": 31,
+        "title": "أكبر صحراء في العالم هي الصحراء الكبرى",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "الصحراء الكبرى تقع في شمال أفريقيا"
+      },
+      {
+        "id": 32,
+        "title": "أكبر جزيرة في العالم هي",
+        "answer_1": "مدغشقر",
+        "answer_2": "أستراليا",
+        "answer_3": "جرينلاند",
+        "answer_4": "نيوزيلندا",
+        "true_answer": "جرينلاند",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {"pattern_id": 2, "pattern_name": "Choose the correct answer"},
+        "hint": "جرينلاند هي أكبر جزيرة في العالم"
+      },
+      {
+        "id": 33,
+        "title": "يسمى صغير الحصان",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "مهرة",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 4, "pattern_name": "Fill the answer"},
+        "hint": "صغير الحصان يسمى مهرة"
+      }
+    ]
+  },
+  {
+    "level_no": 9,
+    "unlock_points": 80,
+    "questions": [
+      {
+        "id": 34,
+        "title": "أعلى شلال في العالم هو شلال آنجل",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "شلال آنجل في فنزويلا هو الأعلى في العالم"
+      },
+      {
+        "id": 35,
+        "title": "أول دولة أطلقت إنترنت تجاري",
+        "answer_1": "الولايات المتحدة",
+        "answer_2": "اليابان",
+        "answer_3": "ألمانيا",
+        "answer_4": "المملكة المتحدة",
+        "true_answer": "الولايات المتحدة",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {"pattern_id": 2, "pattern_name": "Choose the correct answer"},
+        "hint": "الولايات المتحدة أول دولة أطلقت الإنترنت التجاري"
+      },
+      {
+        "id": 36,
+        "title": "صغير الغزال يسمى",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "ظبي",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 4, "pattern_name": "Fill the answer"},
+        "hint": "صغير الغزال يسمى ظبي"
+      }
+    ]
+  },
+  {
+    "level_no": 10,
+    "unlock_points": 100,
+    "questions": [
+      {
+        "id": 37,
+        "title": "أطول جبل في العالم هو جبل إيفرست",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "جبل إيفرست هو أعلى قمة على سطح الأرض"
+      },
+      {
+        "id": 38,
+        "title": "أول دولة عربية أطلقت قمر صناعي",
+        "answer_1": "الإمارات",
+        "answer_2": "مصر",
+        "answer_3": "السعودية",
+        "answer_4": "الجزائر",
+        "true_answer": "الإمارات",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {"pattern_id": 2, "pattern_name": "Choose the correct answer"},
+        "hint": "الإمارات كانت أول دولة عربية تطلق قمر صناعي في الفضاء"
+      },
+      {
+        "id": 39,
+        "title": "أشهر لوحة رسمها ليوناردو دافنشي هي",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "الموناليزا",
+        "points": 3,
+        "duration": 25000,
+        "pattern": {"pattern_id": 4, "pattern_name": "Fill the answer"},
+        "hint": "الموناليزا أشهر لوحة لليوناردو دافنشي"
+      },
+      {
+        "id": 40,
+        "title": "أصغر كوكب في المجموعة الشمسية هو عطارد",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "عطارد أصغر كواكب المجموعة الشمسية"
+      },
+      {
+        "id": 41,
+        "title": "أكبر بحيرة في العالم هي بحيرة سوبيريور",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "false",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "بحيرة قزوين هي أكبر بحيرة في العالم"
+      },
+      {
+        "id": 42,
+        "title": "يسمى صغير الدجاجة",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "كتكوت",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 4, "pattern_name": "Fill the answer"},
+        "hint": "صغير الدجاجة يسمى كتكوت"
+      },
+      {
+        "id": 43,
+        "title": "أطول نهر في قارة آسيا هو نهر اليانغتسي",
+        "answer_1": "",
+        "answer_2": "",
+        "answer_3": "",
+        "answer_4": "",
+        "true_answer": "true",
+        "points": 2,
+        "duration": 15000,
+        "pattern": {"pattern_id": 1, "pattern_name": "True of False"},
+        "hint": "نهر اليانغتسي أطول نهر في آسيا"
+      },
+      {
+        "id": 44,
+        "title": "أول رائد فضاء مشى على سطح القمر هو",
+        "answer_1": "نيل أرمسترونغ",
+        "answer_2": "باز ألدرين",
+        "answer_3": "يووري غاغارين",
+        "answer_4": "مايكل كولينز",
+        "true_answer": "نيل أرمسترونغ",
+        "points": 3,
+        "duration": 20000,
+        "pattern": {"pattern_id": 2, "pattern_name": "Choose the correct answer"},
+        "hint": "نيل أرمسترونغ أول من مشى على سطح القمر"
+      }
+    ]
+  }
+]

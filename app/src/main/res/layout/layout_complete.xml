@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/_20sdp"
+    android:paddingTop="@dimen/_20sdp">
+
+    <LinearLayout
+        android:id="@+id/com_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="1"
+            app:boxBackgroundColor="@color/gray_lite">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_answer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_44sdp"
+                android:inputType="text"
+                android:maxLines="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bu_check"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_43sdp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="تحقق"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:cornerRadius="10dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvCompleteSolving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary_color"
+        android:textSize="@dimen/_17ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/com_linear" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
