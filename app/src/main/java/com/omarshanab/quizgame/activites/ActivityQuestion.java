@@ -19,6 +19,7 @@ import com.omarshanab.quizgame.database.ModelHistory;
 import com.omarshanab.quizgame.database.ModelQuestion;
 import com.omarshanab.quizgame.databinding.ActivityQuestionBinding;
 import com.omarshanab.quizgame.databinding.LayoutToastBinding;
+import com.omarshanab.quizgame.interfaces.OnListenerAnswer;
 import com.omarshanab.quizgame.utils.DialogReloadLevel;
 import com.omarshanab.quizgame.utils.DialogWarning;
 import com.omarshanab.quizgame.utils.Utils;
@@ -28,7 +29,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityQuestion extends AppCompatActivity {
+public class ActivityQuestion extends AppCompatActivity implements OnListenerAnswer {
     ActivityQuestionBinding binding;
     int currentPagerPosition = 0;
     int scoreNum = 0;
@@ -77,51 +78,37 @@ public class ActivityQuestion extends AppCompatActivity {
         }
 
         binding.tvQuestionType.setText(questionsType.get(currentPagerPosition));
-        binding.tvQuestion.setText(questions.get(currentPagerPosition).getTitle(), TextView.BufferType.SPANNABLE);
+        binding.tvQuestion.setText(
+                questions.get(currentPagerPosition).getTitle(),
+                TextView.BufferType.SPANNABLE
+        );
 
         binding.progressQuestions.setMax(questions.size() * 20);
         binding.progressQuestions.setProgress((currentPagerPosition + 1) * 20);
 
         setCountdown(questions.get(currentPagerPosition).getDuration());
 
-        adapter = new QuestionsPagerAdapter(questions);
+        adapter = new QuestionsPagerAdapter(questions, this);
         binding.viewPager.setAdapter(adapter);
         binding.viewPager.setUserInputEnabled(false);
         binding.viewPager.setCurrentItem(currentPagerPosition, false);
-        QuestionsPagerAdapter.setListenerAnswer((id, isTrue, score) -> {
-            showToastAnswer(isTrue, ActivityQuestion.this);
-            setTouchViewPager(true);
-            if (countDownTimer != null) {
-                countDownTimer.cancel();
-            }
-
-            int pp = 0;
-            if (scoreNum + score >= 0) {
-                scoreNum += score;
-                pp = score;
-            } else {
-                pp = -scoreNum;
-            }
-            binding.tvScore.setText(String.valueOf(scoreNum));
-            repository.insertHistoryGame(new ModelHistory(
-                    Utils.userId, levelNo, id, isTrue ? 1 : 0, pp));
-            System.out.println("setListenerAnswer isTrue" + isTrue);
-        });
 
         binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 currentPagerPosition = position;
                 binding.tvQuestionType.setText(questionsType.get(currentPagerPosition));
-                binding.tvQuestion.setText(questions.get(position).getTitle(), TextView.BufferType.SPANNABLE);
+                binding.tvQuestion.setText(
+                        questions.get(position).getTitle(),
+                        TextView.BufferType.SPANNABLE
+                );
                 setCountdown(questions.get(currentPagerPosition).getDuration());
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                if (state == 2) {
+                if (state == ViewPager2.SCROLL_STATE_SETTLING) {
                     setTouchViewPager(false);
-                    System.out.println("registerOnPageChangeCallback");
                 }
             }
         });
@@ -154,8 +141,7 @@ public class ActivityQuestion extends AppCompatActivity {
                             scoreNum = num;
                             binding.tvScore.setText(String.valueOf(scoreNum));
                             binding.progressQuestions.setProgress(20);
-                            adapter = new QuestionsPagerAdapter(questions);
-                            binding.viewPager.setAdapter(adapter);
+                            adapter.reloadQuestions();
                             setTouchViewPager(false);
                         }));
                     });
@@ -183,7 +169,6 @@ public class ActivityQuestion extends AppCompatActivity {
             countDownTimer.cancel();
         }
         countDownTimer = new CountDownTimer(millieSecond, 1000) {
-            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long millisUntilFinished) {
                 String millieSecondString = String.valueOf(millisUntilFinished);
@@ -201,7 +186,6 @@ public class ActivityQuestion extends AppCompatActivity {
             public void onFinish() {
                 Toast.makeText(ActivityQuestion.this, R.string.finish_time, Toast.LENGTH_SHORT).show();
                 setTouchViewPager(true);
-                System.out.println("onFinish");
                 int pointQuestion = -questions.get(currentPagerPosition).getPoints();
                 int pp = 0;
                 if (scoreNum + pointQuestion <= 0) {
@@ -209,9 +193,15 @@ public class ActivityQuestion extends AppCompatActivity {
                     scoreNum = 0;
                 }
                 binding.tvScore.setText(String.valueOf(scoreNum));
-                repository.insertHistoryGame(new ModelHistory(Utils.userId, levelNo,
-                        questions.get(currentPagerPosition).getQuestionId(), 0,
-                        scoreNum == 0 ? pp : -questions.get(currentPagerPosition).getPoints()));
+                repository.insertHistoryGame(
+                        new ModelHistory(
+                                Utils.userId,
+                                levelNo,
+                                questions.get(currentPagerPosition).getQuestionId(),
+                                0,
+                                scoreNum == 0 ? pp : -questions.get(currentPagerPosition).getPoints()
+                        )
+                );
             }
         };
         countDownTimer.start();
@@ -260,5 +250,26 @@ public class ActivityQuestion extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Utils.chancelAlarmNotification(getApplicationContext());
+    }
+
+    @Override
+    public void onAnswerQuestion(int id, boolean isTrue, int score) {
+        showToastAnswer(isTrue, ActivityQuestion.this);
+        setTouchViewPager(true);
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+
+        int pp;
+        if (scoreNum + score >= 0) {
+            scoreNum += score;
+            pp = score;
+        } else {
+            pp = -scoreNum;
+        }
+        binding.tvScore.setText(String.valueOf(scoreNum));
+        repository.insertHistoryGame(new ModelHistory(
+                Utils.userId, levelNo, id, isTrue ? 1 : 0, pp));
+        System.out.println("setListenerAnswer isTrue" + isTrue);
     }
 }

@@ -13,20 +13,24 @@ import com.omarshanab.quizgame.database.ModelQuestion;
 import com.omarshanab.quizgame.databinding.LayoutCompleteBinding;
 import com.omarshanab.quizgame.databinding.LayoutMultipleChoiceBinding;
 import com.omarshanab.quizgame.databinding.LayoutTrueOrFalseBinding;
-import com.omarshanab.quizgame.interfaces.ListenerAnswer;
+import com.omarshanab.quizgame.interfaces.OnListenerAnswer;
 
 import java.util.List;
 
 public class QuestionsPagerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    List<ModelQuestion> modelQuestions;
-    public static ListenerAnswer listenerAnswer;
+    private final List<ModelQuestion> modelQuestions;
+    public OnListenerAnswer onListenerAnswer;
 
-    public static void setListenerAnswer(ListenerAnswer listenerAnswer) {
-        QuestionsPagerAdapter.listenerAnswer = listenerAnswer;
+    public QuestionsPagerAdapter(
+            List<ModelQuestion> modelQuestions,
+            OnListenerAnswer onListenerAnswer
+    ) {
+        this.modelQuestions = modelQuestions;
+        this.onListenerAnswer = onListenerAnswer;
     }
 
-    public QuestionsPagerAdapter(List<ModelQuestion> modelQuestions) {
-        this.modelQuestions = modelQuestions;
+    public void reloadQuestions() {
+        notifyItemRangeChanged(0,modelQuestions.size());
     }
 
     @Override
@@ -41,17 +45,34 @@ public class QuestionsPagerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        switch (viewType) {
-            case 1:
-                LayoutTrueOrFalseBinding trueOrFalseLayout = LayoutTrueOrFalseBinding.inflate(inflater, parent, false);
-                return new TrueOrFalseViewHolder(trueOrFalseLayout);
-            case 2:
-                LayoutMultipleChoiceBinding chooseLayout = LayoutMultipleChoiceBinding.inflate(inflater, parent, false);
-                return new MultipleChoiceViewHolder(chooseLayout);
-            default:
-                LayoutCompleteBinding completeLayout = LayoutCompleteBinding.inflate(inflater, parent, false);
-                return new CompleteViewHolder(completeLayout);
-        }
+        return switch (viewType) {
+            case 1 -> {
+                LayoutTrueOrFalseBinding trueOrFalseLayout = LayoutTrueOrFalseBinding.inflate(
+                        inflater,
+                        parent,
+                        false
+                );
+                yield new TrueOrFalseViewHolder(trueOrFalseLayout);
+            }
+            case 2 -> {
+                LayoutMultipleChoiceBinding chooseLayout = LayoutMultipleChoiceBinding.inflate(
+                        inflater,
+                        parent,
+                        false
+                );
+                yield new MultipleChoiceViewHolder(
+                        chooseLayout
+                );
+            }
+            default -> {
+                LayoutCompleteBinding completeLayout = LayoutCompleteBinding.inflate(
+                        inflater,
+                        parent,
+                        false
+                );
+                yield new CompleteViewHolder(completeLayout);
+            }
+        };
     }
 
     @Override
@@ -59,17 +80,26 @@ public class QuestionsPagerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         switch (holder.getItemViewType()) {
             case 1:
                 if (holder instanceof TrueOrFalseViewHolder) {
-                    ((TrueOrFalseViewHolder) holder).bind(modelQuestions.get(position));
+                    ((TrueOrFalseViewHolder) holder).bind(
+                            modelQuestions.get(position),
+                            onListenerAnswer
+                    );
                 }
                 break;
             case 2:
                 if (holder instanceof MultipleChoiceViewHolder) {
-                    ((MultipleChoiceViewHolder) holder).bind(modelQuestions.get(position));
+                    ((MultipleChoiceViewHolder) holder).bind(
+                            modelQuestions.get(position),
+                            onListenerAnswer
+                    );
                 }
                 break;
             default:
                 if (holder instanceof CompleteViewHolder) {
-                    ((CompleteViewHolder) holder).bind(modelQuestions.get(position));
+                    ((CompleteViewHolder) holder).bind(
+                            modelQuestions.get(position),
+                            onListenerAnswer
+                    );
                 }
 
         }

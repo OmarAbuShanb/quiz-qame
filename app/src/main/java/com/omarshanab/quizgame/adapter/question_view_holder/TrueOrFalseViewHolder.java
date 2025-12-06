@@ -2,39 +2,49 @@ package com.omarshanab.quizgame.adapter.question_view_holder;
 
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.omarshanab.quizgame.adapter.QuestionsPagerAdapter;
 import com.omarshanab.quizgame.database.ModelQuestion;
-import com.omarshanab.quizgame.databinding.LayoutMultipleChoiceBinding;
 import com.omarshanab.quizgame.databinding.LayoutTrueOrFalseBinding;
+import com.omarshanab.quizgame.interfaces.OnListenerAnswer;
 import com.omarshanab.quizgame.utils.UtilsAnimation;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class TrueOrFalseViewHolder extends RecyclerView.ViewHolder {
     LayoutTrueOrFalseBinding binding;
     ModelQuestion modelQuestion;
+    private String trueAnswer;
 
     public TrueOrFalseViewHolder(LayoutTrueOrFalseBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }
 
-    public void bind(ModelQuestion modelQuestion) {
+    public void bind(ModelQuestion modelQuestion, OnListenerAnswer onListenerAnswer) {
         this.modelQuestion = modelQuestion;
-        binding.cardTrue.setOnClickListener(v -> onClickListener(v, true));
-        binding.cardFalse.setOnClickListener(v -> onClickListener(v, false));
+        try {
+            JSONArray jsonArray = new JSONArray(modelQuestion.getTrueAnswers());
+            if (jsonArray.length() > 0) {
+                trueAnswer = jsonArray.getString(0);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        binding.cardTrue.setOnClickListener(v -> onClickListener(v, true, onListenerAnswer));
+        binding.cardFalse.setOnClickListener(v -> onClickListener(v, false, onListenerAnswer));
     }
 
-    void onClickListener(View v, boolean isTrueButton) {
+    void onClickListener(View v, boolean isTrueButton, OnListenerAnswer onListenerAnswer) {
         UtilsAnimation.scaleViewAnimation(v);
-        boolean isTrueAnswer = Boolean.parseBoolean(modelQuestion.getTrueAnswer()) == isTrueButton;
-        QuestionsPagerAdapter.listenerAnswer.onAnswerQuestion(
+        boolean isTrueAnswerCorrect = Boolean.parseBoolean(trueAnswer) == isTrueButton;
+        onListenerAnswer.onAnswerQuestion(
                 modelQuestion.getQuestionId(),
-                isTrueAnswer,
-                isTrueAnswer ? modelQuestion.getPoints() : -modelQuestion.getPoints());
-        if(!isTrueAnswer) {
-            binding.tvTrueFalseSolving.setText(modelQuestion.getTrueAnswer());
+                isTrueAnswerCorrect,
+                isTrueAnswerCorrect ? modelQuestion.getPoints() : -modelQuestion.getPoints());
+        if (!isTrueAnswerCorrect) {
+            binding.tvTrueFalseSolving.setText(trueAnswer);
         }
     }
 }

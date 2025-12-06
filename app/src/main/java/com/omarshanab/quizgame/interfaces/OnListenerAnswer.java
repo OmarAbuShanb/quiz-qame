@@ -1,5 +1,5 @@
 package com.omarshanab.quizgame.interfaces;
 
-public interface ListenerAnswer {
+public interface OnListenerAnswer {
     void onAnswerQuestion(int id, boolean isTrue, int score);
 }

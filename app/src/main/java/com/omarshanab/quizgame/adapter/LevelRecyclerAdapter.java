@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -15,22 +14,30 @@ import com.omarshanab.quizgame.R;
 import com.omarshanab.quizgame.database.ModelLevel;
 import com.omarshanab.quizgame.databinding.ItemLevelBinding;
 import com.omarshanab.quizgame.interfaces.OnClickLevelListener;
+import com.omarshanab.quizgame.utils.Utils;
 
 import java.util.List;
 
 public class LevelRecyclerAdapter extends RecyclerView.Adapter<LevelRecyclerAdapter.LevelViewHolder> {
     List<ModelLevel> levels;
     int sumPoints;
-    Drawable drawableLockLevel;
-    Drawable drawableUnLockLevel;
     OnClickLevelListener onClickLevelListener;
 
-    public LevelRecyclerAdapter(List<ModelLevel> levels, int sumPoints, Drawable drawableLockLevel, Drawable drawableUnLockLevel, OnClickLevelListener onClickLevelListener) {
+    Drawable drawableLockLevel;
+    Drawable drawableUnLockLevel;
+
+    public LevelRecyclerAdapter(
+            Context context,
+            List<ModelLevel> levels,
+            int sumPoints,
+            OnClickLevelListener onClickLevelListener
+    ) {
         this.levels = levels;
         this.sumPoints = sumPoints;
-        this.drawableLockLevel = drawableLockLevel;
-        this.drawableUnLockLevel = drawableUnLockLevel;
         this.onClickLevelListener = onClickLevelListener;
+
+        drawableLockLevel = Utils.levelViewDrawable(context, R.color.gray);
+        drawableUnLockLevel = Utils.levelViewDrawable(context, R.color.primary_color);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -42,8 +49,8 @@ public class LevelRecyclerAdapter extends RecyclerView.Adapter<LevelRecyclerAdap
     @NonNull
     @Override
     public LevelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_level, null, false);
-        return new LevelViewHolder(view);
+        ItemLevelBinding binding = ItemLevelBinding.inflate(LayoutInflater.from(parent.getContext()));
+        return new LevelViewHolder(binding);
     }
 
     @Override
@@ -64,9 +71,9 @@ public class LevelRecyclerAdapter extends RecyclerView.Adapter<LevelRecyclerAdap
         ItemLevelBinding binding;
         Context context;
 
-        public LevelViewHolder(@NonNull View itemView) {
-            super(itemView);
-            binding = ItemLevelBinding.bind(itemView);
+        public LevelViewHolder(@NonNull ItemLevelBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
             context = itemView.getContext();
         }
 
@@ -78,7 +85,7 @@ public class LevelRecyclerAdapter extends RecyclerView.Adapter<LevelRecyclerAdap
                 binding.getRoot().setOnClickListener(v -> {
                     // ازا بقدر افوت الي بعدها سكرها
                     // ازا كان اخر مرحلة افتحها
-                    if (isLastLevel || sumPoints < pointsNextLevel){
+                    if (isLastLevel || sumPoints < pointsNextLevel) {
                         onClickLevelListener.onClick(level.getLevelNo(), isLastLevel, pointsNextLevel);
                     } else {
                         Toast.makeText(context, R.string.you_have_finished_this_level_before, Toast.LENGTH_SHORT).show();

@@ -1,7 +1,6 @@
 package com.omarshanab.quizgame.activites;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -29,47 +28,49 @@ public class ActivityLevel extends AppCompatActivity {
         binding = ActivityLevelBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.levels));
+        Objects.requireNonNull(
+                getSupportActionBar()).setTitle(getString(R.string.levels)
+        );
 
         repository = DatabaseRepository.getInstance(getApplication());
-        repository.getAllLevels(levels -> repository.getSumPoints(Utils.userId, sumPoints -> {
-            Drawable drawableLockLevel = Utils.gradientDrawableView(ActivityLevel.this,
-                    getResources().getColor(R.color.white), 8f, 4, getResources().getColor(R.color.gray));
-            Drawable drawableUnLockLevel = Utils.gradientDrawableView(ActivityLevel.this,
-                    getResources().getColor(R.color.white), 8f, 4, getResources().getColor(R.color.primary_color));
-
-            runOnUiThread(() -> {
-                adapter = new LevelRecyclerAdapter(levels, sumPoints, drawableLockLevel, drawableUnLockLevel,
-                        (levelNo, isLastLevel, pointsLastLevel) ->
-                                repository.getQuestionsLevel(Utils.userId, levelNo, (questions, lastQuestionSolveInLevelIndex, skipCount) -> {
-                                    Intent intent = new Intent(getBaseContext(), ActivityQuestion.class);
-                                    intent.putExtra("questions", (Serializable) questions);
-                                    intent.putExtra("lastQuestionSolveInLevelIndex", lastQuestionSolveInLevelIndex);
-                                    intent.putExtra("skipCount", skipCount);
-                                    intent.putExtra("sumPoints", sumPoints);
-                                    intent.putExtra("levelNo", levelNo);
-                                    intent.putExtra("isLastLevel", isLastLevel);
-                                    intent.putExtra("pointsLastLevel", pointsLastLevel);
-                                    arl.launch(intent);
-                                    Utils.playSound(this, R.raw.click);
-                                }));
-                binding.levelRecyclerView.setHasFixedSize(true);
-                binding.levelRecyclerView.setLayoutManager(new GridLayoutManager(ActivityLevel.this, 2));
-                binding.levelRecyclerView.setAdapter(adapter);
-            });
-        }));
+        repository.getAllLevels(levels ->
+                repository.getSumPoints(Utils.userId, sumPoints ->
+                        runOnUiThread(() -> {
+                            adapter = new LevelRecyclerAdapter(
+                                    getBaseContext(),
+                                    levels,
+                                    sumPoints,
+                                    (levelNo, isLastLevel, pointsLastLevel) ->
+                                            repository.getQuestionsLevel(
+                                                    Utils.userId,
+                                                    levelNo,
+                                                    (questions, lastQuestionSolveInLevelIndex, skipCount) -> {
+                                                        Intent intent = new Intent(getBaseContext(), ActivityQuestion.class);
+                                                        intent.putExtra("questions", (Serializable) questions);
+                                                        intent.putExtra("lastQuestionSolveInLevelIndex", lastQuestionSolveInLevelIndex);
+                                                        intent.putExtra("skipCount", skipCount);
+                                                        intent.putExtra("sumPoints", sumPoints);
+                                                        intent.putExtra("levelNo", levelNo);
+                                                        intent.putExtra("isLastLevel", isLastLevel);
+                                                        intent.putExtra("pointsLastLevel", pointsLastLevel);
+                                                        arl.launch(intent);
+                                                        Utils.playSound(this, R.raw.click);
+                                                    }));
+                            binding.levelRecyclerView.setHasFixedSize(true);
+                            binding.levelRecyclerView.setLayoutManager(new GridLayoutManager(getBaseContext(), 2));
+                            binding.levelRecyclerView.setAdapter(adapter);
+                        })));
     }
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == 100) {
-                    repository.getSumPoints(Utils.userId, sumPoints -> runOnUiThread(() -> {
-                        adapter.refreshRecycler(sumPoints);
-                    }));
+                    repository.getSumPoints(Utils.userId, sumPoints ->
+                            runOnUiThread(() ->
+                                    adapter.refreshRecycler(sumPoints)
+                            )
+                    );
                 }
             });
 }
-
-
-//        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);

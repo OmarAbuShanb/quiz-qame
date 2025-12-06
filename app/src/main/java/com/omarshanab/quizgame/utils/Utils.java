@@ -11,6 +11,9 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.ColorRes;
+import androidx.core.content.ContextCompat;
+
 import com.omarshanab.quizgame.R;
 import com.omarshanab.quizgame.database.ModelLevel;
 import com.omarshanab.quizgame.database.ModelQuestion;
@@ -41,10 +44,14 @@ public class Utils {
     public static MediaPlayer loopMP;
 
     public static void playOrResumeOrPauseLoopSound(Context ctx) {
-        if (allowSound && loopMP == null) {
-            loopMP = MediaPlayer.create(ctx, R.raw.pubg);
-            loopMP.setLooping(true);
-            loopMP.start();
+        if (allowSound) {
+            if (loopMP == null) {
+                loopMP = MediaPlayer.create(ctx, R.raw.pubg);
+                loopMP.setLooping(true);
+                loopMP.start();
+            } else if (!loopMP.isPlaying()) {
+                loopMP.start();
+            }
         }
     }
 //    private static int loopMPLastPositions;
@@ -91,7 +98,7 @@ public class Utils {
         calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) - 1);
         Intent intent = new Intent(context, AlarmReceiver.class);
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,
-                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 (60 * 2) * 1000, pendingIntent);
@@ -100,7 +107,7 @@ public class Utils {
     public static void chancelAlarmNotification(Context context) {
         Intent intent = new Intent(context, AlarmReceiver.class);
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,
-                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
     }
@@ -116,12 +123,14 @@ public class Utils {
         toast.show();
     }
 
-    public static GradientDrawable gradientDrawableView(
-            Context context, int backgroundColor, float cornerRadius, int strokeWidth, int strokeColor) {
+    public static GradientDrawable levelViewDrawable(Context context, @ColorRes int strokeColor) {
         GradientDrawable gradientDrawable = new GradientDrawable();
-        gradientDrawable.setColor(backgroundColor);
-        gradientDrawable.setCornerRadius(convertDpToPixel(cornerRadius, context));
-        gradientDrawable.setStroke(convertDpToPixel(strokeWidth, context), strokeColor);
+        gradientDrawable.setColor(ContextCompat.getColor(context, R.color.white));
+        gradientDrawable.setCornerRadius(convertDpToPixel(8f, context));
+        gradientDrawable.setStroke(
+                convertDpToPixel(4, context),
+                ContextCompat.getColor(context, strokeColor)
+        );
         return gradientDrawable;
     }
 
@@ -167,17 +176,25 @@ public class Utils {
                     JSONObject jsonObject1 = array.getJSONObject(j);
                     int id = jsonObject1.getInt("id");
                     String title = jsonObject1.getString("title");
-                    String answer1 = jsonObject1.getString("answer_1");
-                    String answer2 = jsonObject1.getString("answer_2");
-                    String answer3 = jsonObject1.getString("answer_3");
-                    String answer4 = jsonObject1.getString("answer_4");
-                    String trueAnswer = jsonObject1.getString("true_answer");
+
+                    String answers = null;
+                    if (jsonObject1.has("answers")) {
+                        answers = jsonObject1.getJSONArray("answers").toString();
+                    }
+
+                    String trueAnswers;
+                    if (jsonObject1.has("true_answers")) {
+                        trueAnswers = jsonObject1.getJSONArray("true_answers").toString();
+                    } else {
+                        trueAnswers = new JSONArray().put(jsonObject1.getString("true_answer")).toString();
+                    }
+
                     int points = jsonObject1.getInt("points");
                     int duration = jsonObject1.getInt("duration");
-                    int patternId = jsonObject1.getJSONObject("pattern").getInt("pattern_id");
+                    int patternId = jsonObject1.getJSONObject("pattern").getInt("id");
                     String hint = jsonObject1.getString("hint");
-                    modelQuestionArrayList.add(new ModelQuestion(id, title, answer1, answer2, answer3, answer4,
-                            trueAnswer, points, duration, patternId, hint, levelNo));
+                    modelQuestionArrayList.add(new ModelQuestion(id, title, answers, trueAnswers,
+                            points, duration, patternId, hint, levelNo));
                 }
             }
         } catch (JSONException e) {

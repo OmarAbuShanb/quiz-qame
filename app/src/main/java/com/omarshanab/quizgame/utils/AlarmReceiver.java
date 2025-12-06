@@ -34,7 +34,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Intent intent = new Intent(context, MainActivity.class);
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent =
-                PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder notBuilder = new NotificationCompat.Builder(context, String.valueOf(notificationId));
         notBuilder

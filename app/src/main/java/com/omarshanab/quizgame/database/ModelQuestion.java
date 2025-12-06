@@ -30,20 +30,11 @@ public class ModelQuestion implements Serializable {
     @ColumnInfo()
     private String title;
 
-    @ColumnInfo(name = "answer_1")
-    private String answer1;
+    @ColumnInfo(name = "answers")
+    private String answers;
 
-    @ColumnInfo(name = "answer_2")
-    private String answer2;
-
-    @ColumnInfo(name = "answer_3")
-    private String answer3;
-
-    @ColumnInfo(name = "answer_4")
-    private String answer4;
-
-    @ColumnInfo(name = "true_answer")
-    private String trueAnswer;
+    @ColumnInfo(name = "true_answers")
+    private String trueAnswers;
 
     @ColumnInfo()
     private int points;
@@ -60,14 +51,11 @@ public class ModelQuestion implements Serializable {
     @ColumnInfo(name = "level_no")
     private int levelNo;
 
-    public ModelQuestion(int questionId, String title, String answer1, String answer2, String answer3, String answer4, String trueAnswer, int points, int duration, int patternId, String hint, int levelNo) {
+    public ModelQuestion(int questionId, String title, String answers, String trueAnswers, int points, int duration, int patternId, String hint, int levelNo) {
         this.questionId = questionId;
         this.title = title;
-        this.answer1 = answer1;
-        this.answer2 = answer2;
-        this.answer3 = answer3;
-        this.answer4 = answer4;
-        this.trueAnswer = trueAnswer;
+        this.answers = answers;
+        this.trueAnswers = trueAnswers;
         this.points = points;
         this.duration = duration;
         this.patternId = patternId;
@@ -91,44 +79,20 @@ public class ModelQuestion implements Serializable {
         this.title = title;
     }
 
-    public String getAnswer1() {
-        return answer1;
+    public String getAnswers() {
+        return answers;
     }
 
-    public void setAnswer1(String answer1) {
-        this.answer1 = answer1;
+    public void setAnswers(String answers) {
+        this.answers = answers;
     }
 
-    public String getAnswer2() {
-        return answer2;
+    public String getTrueAnswers() {
+        return trueAnswers;
     }
 
-    public void setAnswer2(String answer2) {
-        this.answer2 = answer2;
-    }
-
-    public String getAnswer3() {
-        return answer3;
-    }
-
-    public void setAnswer3(String answer3) {
-        this.answer3 = answer3;
-    }
-
-    public String getAnswer4() {
-        return answer4;
-    }
-
-    public void setAnswer4(String answer4) {
-        this.answer4 = answer4;
-    }
-
-    public String getTrueAnswer() {
-        return trueAnswer;
-    }
-
-    public void setTrueAnswer(String trueAnswer) {
-        this.trueAnswer = trueAnswer;
+    public void setTrueAnswers(String trueAnswers) {
+        this.trueAnswers = trueAnswers;
     }
 
     public int getPoints() {
